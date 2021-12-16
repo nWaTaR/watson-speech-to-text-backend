@@ -4,4 +4,4 @@ metadata:
   name: webhook-secret
 stringData:
   token: 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
-  secret: watson-speech-to-text-backend-gh-pat
+  # secret: watson-speech-to-text-backend-gh-pat

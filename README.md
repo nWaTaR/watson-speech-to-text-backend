@@ -1,8 +1,6 @@
-# Watson Speech To Text Backend
+# nWaTaR Watson Speech To Text Backend
 
 ## Openshift Deploy
-
-# Tauras Backend
 
 ### How to setup on local
 
@@ -120,10 +118,13 @@ oc apply -f ./tekton/kustomize/trigger/tekton-triggers-sa.yaml
 
   - アプリのソースコードを `https://github.com/nWaTaR/watson-speech-to-text-backend` に登録
 
-  - Github のパーソナルアクセストークンを指定して `$ oc apply -f webhook.yaml`
+  - Github のパーソナルアクセストークンを指定して `$ oc apply -f ./tekton/kustomize/trigger/webhook.yaml`
 
   - `$ oc get route` の結果 akpfs-el-route の値として取得されるホスト名を webhook の Payload URL に指定してアプリに Webhook を登録
 
 - [ ] パイプラインを登録
 
   - `$ oc apply -f pipeline.yaml`
+
+
+  kubectl get all

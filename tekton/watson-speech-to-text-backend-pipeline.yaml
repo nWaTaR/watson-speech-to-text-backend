@@ -51,6 +51,8 @@ spec:
         - name: ARGS
           value: 
             - test
+        - name: IMAGE
+          value: "docker.io/library/node:14-alpine"
     - name: build-image
       runAfter:
         - run-tests
@@ -62,7 +64,8 @@ spec:
           workspace: pipeline-shared-data
       params:
         - name: IMAGE
-          value: "$(params.image-repo):$(tasks.clone-repository.results.commit)"
+          value: "$(params.image-repo):latest"
+          # value: "$(params.image-repo):$(tasks.clone-repository.results.commit)"
     - name: kustomize-build
       runAfter:
         - build-image
@@ -74,7 +77,8 @@ spec:
           workspace: pipeline-shared-data
       params:
         - name: image-with-tag
-          value: "quay.io/wataru_nishiki1_ibm/watson-speech-to-text-backend=$(params.image-repo):$(tasks.clone-repository.results.commit)"
+          value: "quay.io/wataru_nishiki1_ibm/watson-speech-to-text-backend=$(params.image-repo):latest"
+          # value: "quay.io/wataru_nishiki1_ibm/watson-speech-to-text-backend=$(params.image-repo):$(tasks.clone-repository.results.commit)"
     - name: test-deploy
       runAfter:
         - kustomize-build

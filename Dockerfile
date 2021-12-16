@@ -14,9 +14,12 @@ WORKDIR /usr/local/app
 # ワイルドカードを使用して、package.json と package-lock.json の両方が確実にコピーされるようにします。
 COPY ./package*.json .
 
-RUN npm i --production
+RUN npm i --production && \
+  adduser -S -g root app && \
+  chmod -R 755 ./ && \
+  chown -R app:root ./
 
-COPY . .
+COPY --chown=app:root . .
 
 # アプリケーションのソースをバンドルする
 EXPOSE 8000
