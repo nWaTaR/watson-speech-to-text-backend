@@ -1,0 +1,174 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: checkride nishiki Backend - API
+servers:
+  - url: http://localhost:9080/TBD/v1
+    description: libertyをローカルで起動してテストする際のurl
+paths:
+  '/watson-speech-to-text/detection/{keywords}':
+    post:
+      summary: 【音声】文字列検出一覧取得API
+      operationId: getDetectedSpeechToText
+      security: []
+      description: |
+        日本語音声をテキストデータに変換して、指定された単語に一致する単語の位置、及び単語の前後5文字の一覧を取得するAPI
+
+        sort
+          position | asc
+
+      tags:
+        - videos
+      parameters:
+        - name: keywords
+          in: path
+          description: |
+            検索する単語     
+            単語を複数指定する場合、半角スペースを利用する。
+            例) 音声 テスト
+          required: true
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: |
+            返却する一覧の最大数
+            指定しない場合、最大1000件
+          required: false
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: |
+            返却する一覧の開始位置
+            指定しない場合、開始位置は0件目
+          required: false
+          schema:
+            type: integer
+        - name: audio
+          in: header
+          description: wavファイル
+          required: true
+          schema:
+            type: string
+            format: binary
+      responses:
+        '200':
+          description: |
+            成功時のレスポンス
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DetectionOfVideos"
+        '400':
+          description: |
+            バリデーションエラー時のレスポンス
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+        '401':
+          description: |
+            認証エラー時のレスポンス
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
+        '500':
+          description: |
+            システムエラー時のレスポンス
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SystemError"
+components:
+  schemas:
+    DetectionOfVideos:
+      type: object
+      properties:
+        speechText:
+          type: string
+          example: "あああああ 文字列 あああああ 例 あいうえお"
+          description: "文字列"
+        search:
+          $ref: "#/components/schemas/Detections"
+    Detections:
+      type: array
+      items:
+        $ref: "#/components/schemas/Detection"
+    Detection:
+      allOf:
+        - $ref: "#/components/schemas/DetectionKeyword"
+        - $ref: "#/components/schemas/DetectionPosition"
+        - $ref: "#/components/schemas/DetectionText"
+    DetectionKeyword:
+      properties:
+        keyword:
+          type: string
+          example: "文字列"
+          description: "検索する文字列"
+    DetectionPosition:
+      properties:
+        position:
+          type: string
+          example: "7"
+          description: "文字列が一致した位置"
+    DetectionText:
+      properties:
+        characterString:
+          type: string
+          example: "あああああ文字列あああああ"
+          description: "文字列"
+
+#基本型
+    Instant:
+      type: string
+      example: '2021-12-34T23:59:59.123456789+09:00'
+      pattern: '^[0-9]{4}-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]{0,9})?[+|-]([0-9][0-9]:[0-9][0-9])$'
+      description: "時刻の表現。<時間>:<分>で表現、ナノ秒まで表現を可能とする。"
+#エラー情報
+    ValidationError:
+      description: 'エラー'
+      type: object
+      required:
+        - message
+        - code
+      properties:
+        message:
+          title: 'エラーメッセージ'
+          type: string
+          example: '不正なパラメータです'
+        code:
+          title: 'ステータスコード'
+          type: integer
+          example: 400
+    SystemError:
+      description: 'エラー'
+      type: object
+      required:
+        - message
+        - code
+      properties:
+        message:
+          title: 'エラーメッセージ'
+          type: string
+          example: 'システムエラーが発生しました'
+        code:
+          title: 'ステータスコード'
+          type: integer
+          example: 500
+    AuthError:
+      description: 'エラー'
+      type: object
+      required:
+        - message
+        - code
+      properties:
+        message:
+          title: 'エラーメッセージ'
+          type: string
+          example: '認証エラーが発生しました'
+        code:
+          title: 'ステータスコード'
+          type: integer
+          example: 401

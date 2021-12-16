@@ -1,0 +1,11 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: el-route
+spec:
+  port:
+    targetPort: http-listener
+  to:
+    kind: Service
+    name: el-watson-speech-to-text-backend
+    weight: 100

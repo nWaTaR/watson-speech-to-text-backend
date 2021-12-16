@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: watson-speech-to-text-backend-service
+  labels:
+    app: watson-speech-to-text-backend
+spec:
+  type: NodePort
+  selector:
+    app: watson-speech-to-text-backend
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: http-listener

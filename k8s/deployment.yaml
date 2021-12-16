@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: watson-speech-to-text-backend-deployment
+  labels:
+    app: watson-speech-to-text-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: watson-speech-to-text-backend
+  template:
+    metadata:
+      labels:
+        app: watson-speech-to-text-backend
+    spec:
+      containers:
+        - name: watson-speech-to-text-backend
+          image: quay.io/wataru_nishiki1_ibm/watson-speech-to-text-backend:0.1.0
+          imagePullPolicy: Always
+          ports:
+            - name: http-listener
+              containerPort: 8000
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 8000
+          #   initialDelaySeconds: 3
+          #   periodSeconds: 3

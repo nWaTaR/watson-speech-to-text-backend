@@ -1,0 +1,14 @@
+version: "0.1"
+
+# ローカルでのみ利用
+services:
+  env_test:
+    container_name: watson-speech-to-text-backend
+    env_file: .env
+    build:
+      context: .
+      dockerfile: ./dockerfile
+      args:
+        - PORT=${PORT}
+    restart: always
+    tty: true

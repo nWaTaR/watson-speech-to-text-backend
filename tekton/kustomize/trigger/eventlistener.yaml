@@ -1,0 +1,17 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: watson-speech-to-text-backend
+spec:
+  serviceAccountName: tekton-triggers-sa
+  triggers:
+    - name: deploy-trigger-for-backend
+      bindings:
+      - ref: watson-speech-to-text-backend-triggerbinding
+      template:
+        ref: watson-speech-to-text-backend-triggertemplate
+      interceptors:
+      - github:
+          eventTypes: ["push"]
+      - cel:
+          filter: "body.repository.name == 'watson-speech-to-text-backend' && body.ref.split('/')[2] == 'master'"

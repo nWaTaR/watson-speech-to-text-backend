@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: nishiki-watson-speech-to-text-backend
+commonAnnotations:
+  enzo: "true"
+resources:
+- deploy-role.yaml
+- eventlistener.yaml
+- route.yaml
+- tekton-triggers-role.yaml
+- tekton-triggers-sa.yaml
+- tekton-triggertemplate.yaml
+- triggerbinding.yaml
+- webhook.yaml

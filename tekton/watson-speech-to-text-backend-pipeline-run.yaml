@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: watson-speech-to-text-backend-pipeline-run-
+spec:
+  serviceAccountName: build-bot
+  pipelineRef:
+    name: nishiki-watson-speech-to-text-backend-pipeline
+  workspaces:
+    - name: pipeline-shared-data
+      persistentVolumeClaim:
+        claimName: nishiki-watson-speech-to-text-backend-pvc
