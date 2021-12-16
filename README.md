@@ -6,7 +6,7 @@
 
 ```sh
 docker build --no-cache \
-    --tag quay.io/wataru_nishiki_ibm1/watson-speech-to-text-backend:<VERSION> .
+    --tag quay.io/wataru_nishiki1_ibm/watson-speech-to-text-backend:<VERSION> .
 
 docker login quay.io
 username:
@@ -14,12 +14,12 @@ password:
 
 docker run --name watson-speech-to-text-backend --rm \
     --publish 8000:8000 \
-    quay.io/wataru_nishiki_ibm1/watson-speech-to-text-backend:<VERSION>
+    quay.io/wataru_nishiki1_ibm/watson-speech-to-text-backend:<VERSION>
 
 # 環境変数読み込んでdocker run
 docker run --env-file .env --name watson-speech-to-text-backend --rm \
     --publish 8000:8000 \
-    quay.io/wataru_nishiki_ibm/watson-speech-to-text-backend:<VERSION>
+    quay.io/wataru_nishiki1_ibm/watson-speech-to-text-backend:<VERSION>
 
 docker push quay.io/wataru_nishiki1_ibm/watson-speech-to-text-backend:<VERSION>
 ```

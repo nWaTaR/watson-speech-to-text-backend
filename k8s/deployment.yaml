@@ -21,22 +21,22 @@ spec:
           ports:
             - name: http-listener
               containerPort: 8000
-        - env:
-          - name: SPEECH_TO_TEXT_AUTH_TYPE
-            valueFrom:
-              secretKeyRef:
-                name: watson-speech-to-text-backend-api-key
-                key: SPEECH_TO_TEXT_AUTH_TYPE
-          - name: SPEECH_TO_TEXT_APIKEY
-            valueFrom:
-              secretKeyRef:
-                name: watson-speech-to-text-backend-api-key
-                key: SPEECH_TO_TEXT_APIKEY
-          - name: SPEECH_TO_TEXT_URL
-            valueFrom:
-              secretKeyRef:
-                name: watson-speech-to-text-backend-api-key
-                key: SPEECH_TO_TEXT_URL
+          env:
+            - name: SPEECH_TO_TEXT_AUTH_TYPE
+              valueFrom:
+                secretKeyRef:
+                  name: watson-speech-to-text-backend-api-key
+                  key: SPEECH_TO_TEXT_AUTH_TYPE
+            - name: SPEECH_TO_TEXT_APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: watson-speech-to-text-backend-api-key
+                  key: SPEECH_TO_TEXT_APIKEY
+            - name: SPEECH_TO_TEXT_URL
+              valueFrom:
+                secretKeyRef:
+                  name: watson-speech-to-text-backend-api-key
+                  key: SPEECH_TO_TEXT_URL
           # livenessProbe:
           #   httpGet:
           #     path: /
