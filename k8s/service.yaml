@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: watson-speech-to-text-backend-service
+  name: watson-speech-to-text-backend
   labels:
     app: watson-speech-to-text-backend
 spec:

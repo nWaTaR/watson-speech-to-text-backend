@@ -9,7 +9,7 @@ spec:
       bindings:
       - ref: watson-speech-to-text-backend-triggerbinding
       template:
-        ref: watson-speech-to-text-backend-triggertemplate
+        ref: nishiki-watson-speech-to-text-backend-triggertemplate
       interceptors:
       - github:
           eventTypes: ["push"]

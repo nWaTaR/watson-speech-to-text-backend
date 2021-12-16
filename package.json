@@ -29,7 +29,8 @@
     "verbose": true
   },
   "scripts": {
-    "start": "npx ts-node app/app.ts",
+    "start": "ts-node app/app.ts",
+    "start:npx": "npx ts-node app/app.ts",
     "test": "jest",
     "dev": "nodemon",
     "test:coverage": "npx jest --coverage",

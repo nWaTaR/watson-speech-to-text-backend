@@ -49,7 +49,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: tekton-triggers-role-cl
-  namespace: watson-speech-to-text-backend
+  namespace: nishiki-watson-speech-to-text-backend
 rules:
   - apiGroups:
       - triggers.tekton.dev
@@ -65,11 +65,11 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: tekton-triggers-rolebinding-cl
-  namespace: watson-speech-to-text-backend
+  namespace: nishiki-watson-speech-to-text-backend
 subjects:
   - kind: ServiceAccount
     name: tekton-triggers-sa
-    namespace: watson-speech-to-text-backend
+    namespace: nishiki-atson-speech-to-text-backend
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
