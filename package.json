@@ -5,16 +5,33 @@
     "node": "14.x"
   },
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "jest": {
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
       "/node_modules/"
-    ]
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "ts"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "tsconfig.json"
+      }
+    },
+    "testMatch": [
+      "**/*.test.ts"
+    ],
+    "verbose": true
   },
   "scripts": {
     "start": "npx ts-node app/app.ts",
     "test": "jest",
+    "dev": "nodemon",
     "test:coverage": "npx jest --coverage",
     "test:default": "echo \"Error: no test specified\" && exit 1"
   },

@@ -105,6 +105,8 @@ oc apply -f ./tekton/kustomize/trigger/tekton-triggers-sa.yaml
   - `$ oc policy add-role-to-user cluster-admin -z tekton-triggers-sa` 
 
   - `$ oc apply -f ./tekton/kustomize/trigger/tekton-triggers-role.yaml`
+  
+  - `$ oc apply -f ./tekton/kustomize/trigger/deployer-role.yaml`
 
   - `$ oc apply -f ./tekton/kustomize/trigger/tekton-triggertemplate.yaml`
 
