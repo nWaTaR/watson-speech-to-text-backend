@@ -1,15 +1,15 @@
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: EventListener
 metadata:
-  name: watson-speech-to-text-backend
+  name: api-webhook
 spec:
   serviceAccountName: tekton-triggers-sa
   triggers:
     - name: deploy-trigger-for-backend
       bindings:
-      - ref: watson-speech-to-text-backend-triggerbinding
+      - ref: backend-triggerbinding
       template:
-        ref: nishiki-watson-speech-to-text-backend-triggertemplate
+        ref: backend-triggertemplate
       interceptors:
       - github:
           eventTypes: ["push"]

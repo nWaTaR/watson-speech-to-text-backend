@@ -69,6 +69,8 @@ oc apply -f https://raw.githubusercontent.com/tektoncd/catalog/main/task/yaml-li
 
 oc apply -f https://raw.githubusercontent.com/tektoncd/catalog/main/task/buildah/0.2/buildah.yaml
 
+kubectl apply -f https://raw.githubusercontent.com/tektoncd/catalog/main/task/yaml-lint/0.1/yaml-lint.yaml
+
 oc get tasks
 NAME        AGE
 buildah     7s

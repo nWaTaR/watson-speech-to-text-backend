@@ -5,7 +5,6 @@ metadata:
 rules:
   - apiGroups:
       - triggers.tekton.dev
-      # - tekton.dev
     resources:
       - eventlisteners
       - triggerbindings
@@ -55,7 +54,7 @@ rules:
       - triggers.tekton.dev
     resources:
       - triggerbindings
-      - clusterinterceptors
+      # - clusterinterceptors
     verbs:
       - get
       - list
@@ -69,7 +68,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: tekton-triggers-sa
-    namespace: nishiki-atson-speech-to-text-backend
+    namespace: nishiki-watson-speech-to-text-backend
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole

@@ -1,7 +1,7 @@
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
-  name: nishiki-watson-speech-to-text-backend-triggertemplate
+  name: backend-triggertemplate
 spec:
   resourcetemplates:
     - apiVersion: tekton.dev/v1beta1

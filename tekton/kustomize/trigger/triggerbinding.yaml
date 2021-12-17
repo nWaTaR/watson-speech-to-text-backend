@@ -1,11 +1,11 @@
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerBinding
 metadata:
-  name: watson-speech-to-text-backend-triggerbinding
+  name: backend-triggerbinding
 spec:
   params:
     - name: namespace
-      value: nishiki-watson-speech-to-text-backend
+      value: watson-speech-to-text-backend
     - name: gitrepositoryurl
       value: $(body.repository.url)
     - name: gitrepositoryname
