@@ -21,6 +21,7 @@ spec:
           ports:
             - name: http-listener
               containerPort: 8000
+              protocol: TCP
           env:
             - name: SPEECH_TO_TEXT_AUTH_TYPE
               valueFrom:
@@ -37,9 +38,11 @@ spec:
                 secretKeyRef:
                   name: watson-speech-to-text-backend-api-key
                   key: SPEECH_TO_TEXT_URL
-          # livenessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: 8000
-          #   initialDelaySeconds: 3
-          #   periodSeconds: 3
+          
+          
+            # livenessProbe:
+            #   httpGet:
+            #     path: /
+            #     port: 8000
+            #   initialDelaySeconds: 3
+            #   periodSeconds: 3

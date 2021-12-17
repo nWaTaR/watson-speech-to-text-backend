@@ -98,6 +98,8 @@ oc apply -f ./tekton/watson-speech-to-text-backend-pipeline.yaml
 
 ```
 
+yaml-lint
+
 ```
 oc apply -f ./tekton/kustomize/trigger/tekton-triggers-sa.yaml
 ```

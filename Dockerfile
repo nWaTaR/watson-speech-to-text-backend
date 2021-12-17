@@ -2,6 +2,7 @@ FROM node:14-alpine
 LABEL maintainer="wataru.nishiki1 <Wataru.Nishiki1@ibm.com>"
 SHELL [ "/bin/ash", "-eoux", "pipefail", "-c" ]
 
+# 
 # ENV PORT=$port
 # ENV SPEECH_TO_TEXT_AUTH_TYPE=iam
 # ENV SPEECH_TO_TEXT_APIKEY=$apikey

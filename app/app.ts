@@ -11,7 +11,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const port = process.env.PORT || 3000; // port番号を指定
+const port = process.env.PORT || 8000; // port番号を指定
 
 // ------ ルーティング ------ //
 const router = require('./routes/');
