@@ -43,8 +43,6 @@ spec:
                 secretKeyRef:
                   name: watson-speech-to-text-backend-api-key
                   key: PORT
-          
-          
             # livenessProbe:
             #   httpGet:
             #     path: /
