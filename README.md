@@ -133,3 +133,4 @@ oc apply -f ./tekton/kustomize/trigger/tekton-triggers-sa.yaml
   - `$ oc apply -f pipeline.yaml`
 
   kubectl get all
+  
