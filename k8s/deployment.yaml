@@ -38,6 +38,11 @@ spec:
                 secretKeyRef:
                   name: watson-speech-to-text-backend-api-key
                   key: SPEECH_TO_TEXT_URL
+            - name: PORT
+              valueFrom:
+                secretKeyRef:
+                  name: watson-speech-to-text-backend-api-key
+                  key: PORT
           
           
             # livenessProbe:

@@ -4,7 +4,7 @@ metadata:
   # annotations:
   #   argocd.argoproj.io/sync-options: Validate=false
   #   openshift.io/host.generated: "true"
-  name: watson-speech-to-text-backend
+  name: backend
   labels:
     app: watson-speech-to-text-backend
 spec:
