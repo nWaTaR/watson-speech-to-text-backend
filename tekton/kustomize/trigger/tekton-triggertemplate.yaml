@@ -13,6 +13,6 @@ spec:
         pipelineRef:
           name: nishiki-watson-speech-to-text-backend-pipeline
         workspaces:
-          - name: nishiki-pipeline-shared-data
+          - name: pipeline-shared-data
             persistentVolumeClaim:
               claimName: nishiki-watson-speech-to-text-backend-pvc

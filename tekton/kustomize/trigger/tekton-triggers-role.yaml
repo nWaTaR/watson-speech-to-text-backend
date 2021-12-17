@@ -54,7 +54,7 @@ rules:
       - triggers.tekton.dev
     resources:
       - triggerbindings
-      # - clusterinterceptors
+      - clusterinterceptors
     verbs:
       - get
       - list
