@@ -7,5 +7,5 @@ spec:
     targetPort: http-listener
   to:
     kind: Service
-    name: el-watson-speech-to-text-backend
+    name: el-api-webhook
     weight: 100
