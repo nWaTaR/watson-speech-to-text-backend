@@ -5,7 +5,7 @@ import * as cors from 'cors';
 const app = express();
 app.use(helmet());
 app.use(cors({ 
-  origin: 'http://localhost:3000',
+  origin: 'https://frontend-nishiki-watson-speech-to-text-frontend.itzroks-120000mck6-ufxk6m-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud/',
   credentials: true,
   optionsSuccessStatus: 200
 }));
