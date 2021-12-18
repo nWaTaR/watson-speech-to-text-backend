@@ -5,7 +5,7 @@
     "node": "14.x"
   },
   "description": "",
-  "main": "index.ts",
+  "main": "app.ts",
   "jest": {
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
