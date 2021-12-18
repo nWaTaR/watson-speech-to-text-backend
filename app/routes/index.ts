@@ -53,7 +53,7 @@ router.post('/watson-speech-to-text/detection/:keywords', upload.single("audio")
     ]
   }
 
-  setTimeout(() => { console.log('hoge') }, 5000);
+  setTimeout(() => { console.log('hoge') }, 50000);
 
   res.status(200).send(dummy);
 
