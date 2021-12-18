@@ -52,6 +52,9 @@ router.post('/watson-speech-to-text/detection/:keywords', upload.single("audio")
       { keyword: 'する', position: 239, characterString: 'いやそれをするプロヴァン' }
     ]
   }
+
+  setTimeout(() => { console.log('hoge') }, 5000);
+
   res.status(200).send(dummy);
 
   // const service = new TextService();
