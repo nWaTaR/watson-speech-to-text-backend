@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as helmet from 'helmet';
 import * as cors from 'cors';
 import { DetectionService } from '../services/DetectionService';
-import { TextService } from '../services/TextService';
+// import { TextService } from '../services/TextService';
 const app = express();
 app.use(helmet());
 app.use(cors({ 
@@ -39,17 +39,20 @@ router.get('/videos/toText/:words/detection', (req, res, next) => {
 });
 
 router.post('/watson-speech-to-text/detection/:keywords', upload.single("audio"), async (req: any, res: any, next: any) => {
-  console.log('backend post log', req.keywords);
+  console.log('backend post log', req.params.keywords);
 
   res.header('Access-Control-Allow-Origin', 'https://frontend-nishiki-watson-speech-to-text-frontend.itzroks-120000mck6-ufxk6m-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud');
   res.header('Access-Control-Allow-Headers', '*');
   res.header('Access-Control-Allow-Methods', 'POST, OPTIONS');
 
-  const service = new TextService();
-  service
-    .run(req)
-    .then(result => res.status(200).send(result))
-    .catch(next);
+  // const service = new TextService();
+  // service
+  //   .run(req)
+  //   .then(result => res.status(200).send(result))
+  //   .catch(next);
+  console.log('console res:', res);
+
+  res.status(200).send({message: 'OK'});
 })
 
 // -------------------------------------------------
