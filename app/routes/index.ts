@@ -6,7 +6,7 @@ import { TextService } from '../services/TextService';
 const app = express();
 app.use(helmet());
 app.use(cors({ 
-  origin: 'http://localhost:3000',
+  origin: 'http://127.0.0.1:3000',
   credentials: true,
   optionsSuccessStatus: 200
 }));
@@ -39,7 +39,7 @@ router.get('/videos/toText/:words/detection', (req, res, next) => {
 });
 
 router.post('/watson-speech-to-text/detection/:keywords', upload.single("audio"), async (req: any, res: any, next: any) => {
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:3000');
   res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
 
   const service = new TextService();
