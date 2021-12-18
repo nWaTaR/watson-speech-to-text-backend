@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as helmet from 'helmet';
 import * as cors from 'cors';
 import { DetectionService } from '../services/DetectionService';
-import { TextService } from '../services/TextService';
+// import { TextService } from '../services/TextService';
 const app = express();
 app.use(helmet());
 app.use(cors({ 
@@ -52,6 +52,7 @@ router.post('/watson-speech-to-text/detection/:keywords', upload.single("audio")
       { keyword: 'する', position: 239, characterString: 'いやそれをするプロヴァン' }
     ]
   }
+  res.status(200).send(dummy);
 
   // const service = new TextService();
   // service
@@ -60,11 +61,11 @@ router.post('/watson-speech-to-text/detection/:keywords', upload.single("audio")
   //   .then(result => res.status(200).send(dummy))
   //   .catch(reason => {console.log('reason: ', reason); next()});
 
-  const service = new TextService();
-  const result = await service.run(req);
-  console.log('result: ', result);
+  // const service = new TextService();
+  // const result = await service.run(req);
+  // console.log('result: ', result);
 
-  res.status(200).send(result);
+  // res.status(200).send(result);
 })
 
 // -------------------------------------------------
