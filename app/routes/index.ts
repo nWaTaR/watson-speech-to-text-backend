@@ -41,6 +41,7 @@ router.get('/videos/toText/:words/detection', (req, res, next) => {
 router.post('/watson-speech-to-text/detection/:keywords', upload.single("audio"), async (req: any, res: any, next: any) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods', 'POST, PUT, DELETE, OPTIONS');
 
   const service = new TextService();
   service
