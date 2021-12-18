@@ -22,7 +22,7 @@ import { upload } from "../middlewares/multer"
 
 // routerにルーティングの動作を記述する
 router.get('/helloWorld', (req, res) => {
-    res.status(200).send({ message: 'Hello, world!!!' });
+    res.status(200).send({ message: 'Hello, world!!' });
 });
 
 router.get('/videos/toText/:words/detection', (req, res, next) => {
