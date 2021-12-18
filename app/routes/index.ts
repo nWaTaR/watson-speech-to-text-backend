@@ -53,14 +53,14 @@ router.post('/watson-speech-to-text/detection/:keywords', upload.single("audio")
     ]
   }
 
-  const service = new TextService();
-  service
-    .run(req)
-    // .then(result => res.status(200).send(result))
-    .then(result => res.status(200).send(dummy))
-    .catch(reason => {console.log('reason: ', reason); next()});
+  // const service = new TextService();
+  // service
+  //   .run(req)
+  //   // .then(result => res.status(200).send(result))
+  //   .then(result => res.status(200).send(dummy))
+  //   .catch(reason => {console.log('reason: ', reason); next()});
 
-  // res.status(200).send({message: 'OK'});
+  res.status(200).send(dummy);
 })
 
 // -------------------------------------------------
