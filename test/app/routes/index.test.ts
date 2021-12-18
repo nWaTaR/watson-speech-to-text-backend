@@ -6,6 +6,6 @@ describe('integrationテスト', () => {
         const response = await request(app).get('/helloworld');
     
         expect(response.status).toBe(200);
-        expect(response.body).toEqual({ message: 'Hello, world' });
+        expect(response.body).toEqual({ message: 'Hello, world!!!' });
     });
 });
