@@ -60,7 +60,11 @@ router.post('/watson-speech-to-text/detection/:keywords', upload.single("audio")
   //   .then(result => res.status(200).send(dummy))
   //   .catch(reason => {console.log('reason: ', reason); next()});
 
-  res.status(200).send(dummy);
+  const service = new TextService();
+  const result = await service.run(req);
+  console.log('result: ', result);
+
+  res.status(200).send(result);
 })
 
 // -------------------------------------------------
