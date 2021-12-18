@@ -22,7 +22,8 @@ const router = require('./routes/');
 app.use('/', router);
 
 //サーバ起動
-app.listen(port);
+const app_server = app.listen(port);
+app_server.timeout = 1000 * 60 * 3;   //. ３分
 console.log('listen on port ' + port);
 
 module.exports = app;
