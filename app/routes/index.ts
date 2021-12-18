@@ -5,7 +5,11 @@ import { DetectionService } from '../services/DetectionService';
 import { TextService } from '../services/TextService';
 const app = express();
 app.use(helmet());
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors({ 
+  origin: 'http://localhost:3000',
+  credentials: true,
+  optionsSuccessStatus: 200
+}));
 // ルーティングする
 const router = express.Router();
 
@@ -22,7 +26,7 @@ import { upload } from "../middlewares/multer"
 
 // routerにルーティングの動作を記述する
 router.get('/helloWorld', (req, res) => {
-    res.status(200).send({ message: 'Hello, world!!' });
+    res.status(200).send({ message: 'Hello, world!' });
 });
 
 router.get('/videos/toText/:words/detection', (req, res, next) => {

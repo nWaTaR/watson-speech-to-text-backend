@@ -4,7 +4,11 @@ import * as helmet from 'helmet';
 import * as cors from 'cors';
 const app = express();
 app.use(helmet());
-app.use(cors());
+app.use(cors({ 
+  origin: 'http://localhost:3000',
+  credentials: true,
+  optionsSuccessStatus: 200
+}));
 const bodyParser = require('body-parser');
 
 //body-parserの設定
