@@ -54,7 +54,7 @@ router.post('/watson-speech-to-text/detection/:keywords', upload.single("audio")
   }
 
   var alertmsg = function(){
-    alert("10秒経過");
+    console.log("10秒経過");
   }
   setTimeout(alertmsg, 10000);
 
