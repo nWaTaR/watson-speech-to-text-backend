@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as helmet from 'helmet';
 import * as cors from 'cors';
 import { DetectionService } from '../services/DetectionService';
-// import { TextService } from '../services/TextService';
+import { TextService } from '../services/TextService';
 const app = express();
 app.use(helmet());
 app.use(cors({ 
@@ -45,14 +45,13 @@ router.post('/watson-speech-to-text/detection/:keywords', upload.single("audio")
   res.header('Access-Control-Allow-Headers', '*');
   res.header('Access-Control-Allow-Methods', 'POST, OPTIONS');
 
-  // const service = new TextService();
-  // service
-  //   .run(req)
-  //   .then(result => res.status(200).send(result))
-  //   .catch(next);
-  console.log('console res:', res);
+  const service = new TextService();
+  service
+    .run(req)
+    .then(result => res.status(200).send(result))
+    .catch(reason => {console.log('reason: ', reason); next()});
 
-  res.status(200).send({message: 'OK'});
+  // res.status(200).send({message: 'OK'});
 })
 
 // -------------------------------------------------
