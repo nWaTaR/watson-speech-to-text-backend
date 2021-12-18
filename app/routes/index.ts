@@ -7,7 +7,7 @@ const app = express();
 app.use(helmet());
 app.use(cors({ 
   origin: 'https://frontend-nishiki-watson-speech-to-text-frontend.itzroks-120000mck6-ufxk6m-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud',
-  credentials: true,
+  // credentials: true,
   optionsSuccessStatus: 200
 }));
 // ルーティングする
@@ -39,9 +39,11 @@ router.get('/videos/toText/:words/detection', (req, res, next) => {
 });
 
 router.post('/watson-speech-to-text/detection/:keywords', upload.single("audio"), async (req: any, res: any, next: any) => {
+  console.log('backend post log', req.keywords);
+
   res.header('Access-Control-Allow-Origin', 'https://frontend-nishiki-watson-speech-to-text-frontend.itzroks-120000mck6-ufxk6m-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud');
-  res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
-  res.header('Access-Control-Allow-Methods', 'POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', '*');
+  res.header('Access-Control-Allow-Methods', 'POST, OPTIONS');
 
   const service = new TextService();
   service
