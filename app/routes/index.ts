@@ -50,17 +50,6 @@ router.post('/watson-speech-to-text/detection/:keywords', upload.single("audio")
     .catch(next);
 })
 
-// waston-speech-to-textのサンプルコード
-// https://cloud.ibm.com/apidocs/speech-to-text?code=node#recognize-request
-// router.post('/watson-speech-to-text', upload.single("audio"), async (req: any, res: any, next: any) => {
-
-//   const service = new TextService();
-//   service
-//     .run(req)
-//     .then(result => res.status(200).send(result))
-//     .catch(next);
-// })
-
 // -------------------------------------------------
 //  以下、何のルーティングにもマッチしないorエラー
 // -------------------------------------------------
