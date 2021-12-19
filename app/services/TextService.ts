@@ -30,7 +30,7 @@ export class TextService {
       speechToText: toText.alternative.transcript,
       search: doSearch(toText.alternative.transcript, keywords)
     }
-    console.log('res', res);
+    // console.log('res', res);
     return res;
   }
   watsonSpeechToText = async(req: any) => {
