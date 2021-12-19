@@ -45,13 +45,9 @@ router.post('/watson-speech-to-text/detection/:keywords', upload.single("audio")
   const apikey = process.env.SPEECH_TO_TEXT_APIKEY
   const serviceUrl = process.env.SPEECH_TO_TEXT_URL
 
-  // WatsonAPIのSDKモジュール backendに持っていく
-  const SpeechToTextV1 = require('ibm-watson/speech-to-text/v1');
-  const { IamAuthenticator } = require('ibm-watson/auth');
-
   const service = new TextService();
   service
-    .run(req, apikey, serviceUrl, SpeechToTextV1, IamAuthenticator)
+    .run(req, apikey, serviceUrl)
     .then(result => res.status(200).send(result))
     .catch(reason => {console.log('reason: ', reason); next()});
 
