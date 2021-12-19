@@ -53,4 +53,8 @@ describe("Text Service", () => {
         search: []
       });
     });
+    it("基本的なテスト", () => {
+      const a = 10;
+      expect(a).toBe(10);
+    });
 });
