@@ -7,6 +7,8 @@ metadata:
   name: backend
   labels:
     app: watson-speech-to-text-backend
+  annotations:
+    haproxy.router.openshift.io/timeout: 60s #default timeout 30s
 spec:
   tls:
     termination: edge
