@@ -6,7 +6,7 @@ describe("Text Service", () => {
   const apikey = process.env.SPEECH_TO_TEXT_APIKEY
   const serviceUrl = process.env.SPEECH_TO_TEXT_URL
   const service = new TextService();
-  it("正常系テスト", async () => {
+  it.skip("正常系テスト", async () => {
       let req = {
         params: {
           keywords: 'でしょう'
@@ -35,7 +35,7 @@ describe("Text Service", () => {
         ]
       });
     });
-    it("検索0件", async () => {
+    it.skip("検索0件", async () => {
       let req = {
         params: {
           keywords: '音声ファイル'
