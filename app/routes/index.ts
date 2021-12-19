@@ -58,7 +58,7 @@ router.post('/watson-speech-to-text/detection/:keywords', upload.single("audio")
   //   dummy.search.push({ keyword: 'する', position: 239, characterString: 'いやそれをするプロヴァン' })
   // }
 
-  await new Promise(resolve => setTimeout(resolve, 5000)) // 5秒待つ
+  await new Promise(resolve => setTimeout(resolve, 15000)) // 5秒待つ
   
   console.log(dummy);
 
