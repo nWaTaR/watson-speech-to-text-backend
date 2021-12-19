@@ -11,21 +11,12 @@ interface Trans {
   confidence: number;
 }
 
-// const fs = require('fs');
-
-const apikey = process.env.SPEECH_TO_TEXT_APIKEY
-const serviceUrl = process.env.SPEECH_TO_TEXT_URL
-
-// WatsonAPIのSDKモジュール backendに持っていく
-const SpeechToTextV1 = require('ibm-watson/speech-to-text/v1');
-const { IamAuthenticator } = require('ibm-watson/auth');
-  
 /**
  * 文字列検索一覧取得サービス  
  */
 export class TextService {
-  public async run(req: any): Promise<Response> {
-    const toText = await this.watsonSpeechToText(req)
+  public async run(req: any, apikey: any, serviceUrl: any): Promise<Response> {
+    const toText = await this.watsonSpeechToText(req, apikey, serviceUrl);
     const { keywords } = req.params;
   
     const res = {
@@ -40,7 +31,10 @@ export class TextService {
    * @param req 
    * @returns 
    */
-  watsonSpeechToText = async(req: any): Promise<TextRes> => {
+  watsonSpeechToText = async(req: any, apikey: any, serviceUrl: any): Promise<TextRes> => {
+    // WatsonAPIのSDKモジュール backendに持っていく
+    const SpeechToTextV1 = require('ibm-watson/speech-to-text/v1');
+    const { IamAuthenticator } = require('ibm-watson/auth');
     const speechToText = new SpeechToTextV1({
       authenticator: new IamAuthenticator({
         apikey,
