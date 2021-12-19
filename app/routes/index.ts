@@ -42,9 +42,16 @@ router.post('/watson-speech-to-text/detection/:keywords', upload.single("audio")
   res.header('Access-Control-Allow-Headers', '*');
   res.header('Access-Control-Allow-Methods', 'POST, OPTIONS');
 
+  const apikey = process.env.SPEECH_TO_TEXT_APIKEY
+  const serviceUrl = process.env.SPEECH_TO_TEXT_URL
+
+  // WatsonAPIのSDKモジュール backendに持っていく
+  const SpeechToTextV1 = require('ibm-watson/speech-to-text/v1');
+  const { IamAuthenticator } = require('ibm-watson/auth');
+
   const service = new TextService();
   service
-    .run(req)
+    .run(req, apikey, serviceUrl, SpeechToTextV1, IamAuthenticator)
     .then(result => res.status(200).send(result))
     .catch(reason => {console.log('reason: ', reason); next()});
 
