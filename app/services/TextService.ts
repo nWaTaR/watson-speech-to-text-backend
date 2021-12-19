@@ -1,6 +1,8 @@
 import { doSearch } from "../utils/search";
+import { WatsonUtils } from "../utils/utils";
+import { RecognizeParams, Response } from "../interface";
 
-export interface Text {
+export interface TextRes {
     alternative: Trans;
 }
 
@@ -9,7 +11,7 @@ interface Trans {
   confidence: number;
 }
 
-const fs = require('fs');
+// const fs = require('fs');
 
 const apikey = process.env.SPEECH_TO_TEXT_APIKEY
 const serviceUrl = process.env.SPEECH_TO_TEXT_URL
@@ -22,18 +24,23 @@ const { IamAuthenticator } = require('ibm-watson/auth');
  * 文字列検索一覧取得サービス  
  */
 export class TextService {
-  public async run(req: any): Promise<any> {
+  public async run(req: any): Promise<Response> {
     const toText = await this.watsonSpeechToText(req)
     const { keywords } = req.params;
-    // TODO: position昇順
+  
     const res = {
       speechToText: toText.alternative.transcript,
       search: doSearch(toText.alternative.transcript, keywords)
     }
-    // console.log('res', res);
     return res;
   }
-  watsonSpeechToText = async(req: any) => {
+
+  /**
+   * Watson Speech To Text APIリクエスト関数
+   * @param req 
+   * @returns 
+   */
+  watsonSpeechToText = async(req: any): Promise<TextRes> => {
     const speechToText = new SpeechToTextV1({
       authenticator: new IamAuthenticator({
         apikey,
@@ -42,27 +49,16 @@ export class TextService {
     });
     const file = req.file;
   
-    const recognizeParams = {
+    const recognizeParams: RecognizeParams = {
       // audio: fs.createReadStream(`./tmp/${req.file.filename}`),
       audio: file.buffer,
       contentType: 'audio/wav',
-      // 日本語モデルを指定 UIから指定できるようにしてもよい。
       model: 'ja-JP_BroadbandModel',
     };
-  
-    // TODO: util
-    let toText
-    try {
-      const watsonRes = await speechToText.recognize(recognizeParams);
-      toText = { alternative: watsonRes.result.results[0].alternatives[0], };
-    } catch (error) {
-      console.error(error);
-      toText = { alternative: '' }
-    }
   
     // fs.unlink(`./tmp/${req.file.filename}`, (err: any) => {
     //   if (err) throw err;
     // });
-    return toText
+    return new WatsonUtils().toTextUtil(speechToText, recognizeParams);
   }
 }
